@@ -1,6 +1,7 @@
 # utils.py
 import streamlit as st
 import requests
+from datetime import datetime
 
 def call_gemini_api(prompt):
     """Gọi Gemini API"""
@@ -22,6 +23,10 @@ def call_gemini_api(prompt):
 
 def generate_ai_response(user_message):
     """Tạo phản hồi từ Gemini với RAG"""
+    # Kiểm tra session state
+    if 'rag_system' not in st.session_state:
+        return "❌ Hệ thống chưa được khởi tạo. Vui lòng reload trang."
+    
     # Tìm thông tin liên quan
     relevant_info = st.session_state.rag_system.search_similar(user_message, top_k=3)
     context = "\n".join(relevant_info) if relevant_info else "Không tìm thấy thông tin liên quan trong tài liệu."
