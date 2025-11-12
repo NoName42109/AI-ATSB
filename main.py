@@ -10,10 +10,9 @@ from datetime import datetime
 sys.path.append('./utils')
 sys.path.append('./components')
 
-# Import components
+# Import components - LOẠI BỎ import chat_interface ở đây
 from rag_system import PsychologyRAGSystem
 from header import render_header
-from chat_interface import render_chat_interface
 
 # Cấu hình trang Streamlit
 st.set_page_config(
@@ -25,10 +24,16 @@ st.set_page_config(
 
 # Áp dụng CSS
 def load_css():
-    with open('./styles/main.css') as f:
-        st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
-    with open('./styles/animations.css') as f:
-        st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
+    try:
+        with open('./styles/main.css') as f:
+            st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
+    except:
+        pass
+    try:
+        with open('./styles/animations.css') as f:
+            st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
+    except:
+        pass
 
 # Khởi tạo session state
 def init_session_state():
@@ -58,7 +63,7 @@ def call_gemini_api(prompt):
     except Exception as e:
         return f"❌ Lỗi kết nối: {str(e)}"
 
-# Hàm tạo phản hồi
+# Hàm tạo phản hồi - DI CHUYỂN HÀM NÀY SANG utils.py
 def generate_ai_response(user_message):
     """Tạo phản hồi từ Gemini với RAG"""
     # Tìm thông tin liên quan
@@ -175,6 +180,8 @@ def main():
         render_header()
     
     with col2:
+        # IMPORT CỤC BỘ để tránh circular import
+        from chat_interface import render_chat_interface
         render_chat_interface()
 
 if __name__ == "__main__":
