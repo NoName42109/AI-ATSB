@@ -1,7 +1,8 @@
 # components/chat_interface.py
 import streamlit as st
 from datetime import datetime
-from main import generate_ai_response
+# THAY ĐỔI: Import từ utils thay vì từ main
+from utils import generate_ai_response
 
 def render_chat_interface():
     st.markdown('<div class="cyber-container">', unsafe_allow_html=True)
