@@ -1,4 +1,10 @@
 # utils/rag_system.py
+# Replace this:
+
+
+# With this:
+import pypdf
+
 import os
 import PyPDF2
 import docx
