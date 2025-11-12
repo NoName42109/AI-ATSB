@@ -13,6 +13,33 @@ body {
     overflow-x: hidden;
 }
 
+/* ===== LOGIN STYLES ===== */
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.login-card {
+    background: rgba(0, 0, 0, 0.8);
+    border: 1px solid rgba(72, 219, 251, 0.3);
+    border-radius: 20px;
+    padding: 40px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 0 30px rgba(72, 219, 251, 0.2);
+    max-width: 500px;
+    width: 100%;
+    text-align: center;
+}
+
+.login-subtitle {
+    color: #cccccc;
+    margin-bottom: 30px;
+    font-size: 1.1em;
+}
+
 /* ===== CYBER CARD STYLES ===== */
 .cyber-card {
     background: rgba(0, 0, 0, 0.7) !important;
@@ -21,23 +48,6 @@ body {
     padding: 20px !important;
     margin: 15px 0 !important;
     backdrop-filter: blur(10px) !important;
-    position: relative !important;
-    overflow: hidden !important;
-}
-
-.cyber-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
-    transition: left 0.5s ease;
-}
-
-.cyber-card:hover::before {
-    left: 100%;
 }
 
 /* ===== NEON TEXT STYLES ===== */
@@ -89,11 +99,10 @@ body {
 .feature-list li {
     margin-bottom: 8px !important;
     list-style-type: none !important;
-    position: relative !important;
 }
 
 .feature-list li::before {
-    content: "▸";
+    content: "•";
     color: #48dbfb;
     margin-right: 8px;
 }
@@ -188,16 +197,6 @@ body {
     border-left: 4px solid #feca57 !important;
 }
 
-.ai-badge {
-    background: linear-gradient(45deg, #48dbfb, #0abde3) !important;
-    color: #000000 !important;
-    padding: 2px 8px !important;
-    border-radius: 10px !important;
-    font-size: 0.7em !important;
-    font-weight: bold !important;
-    margin-left: 8px !important;
-}
-
 .message-time {
     font-size: 0.8em !important;
     color: rgba(255, 255, 255, 0.7) !important;
@@ -220,7 +219,7 @@ body {
     line-height: 1.6 !important;
 }
 
-/* ===== ANIMATIONS ===== */
+/* ===== ANIMATIONS (KHÔNG ICON) ===== */
 .floating-shapes {
     position: fixed !important;
     top: 0 !important;
@@ -278,15 +277,6 @@ body {
 }
 
 /* ===== KEYFRAMES ===== */
-@keyframes neonGlow {
-    from {
-        filter: drop-shadow(0 0 5px currentColor);
-    }
-    to {
-        filter: drop-shadow(0 0 20px currentColor);
-    }
-}
-
 @keyframes messageSlide {
     from {
         opacity: 0;
@@ -307,18 +297,6 @@ body {
     }
 }
 
-@keyframes pulse {
-    0% { 
-        box-shadow: 0 0 10px rgba(72, 219, 251, 0.3); 
-    }
-    50% { 
-        box-shadow: 0 0 20px rgba(72, 219, 251, 0.6); 
-    }
-    100% { 
-        box-shadow: 0 0 10px rgba(72, 219, 251, 0.3); 
-    }
-}
-
 /* ===== SCROLLBAR ===== */
 .chat-messages::-webkit-scrollbar {
     width: 8px !important;
@@ -332,10 +310,6 @@ body {
 .chat-messages::-webkit-scrollbar-thumb {
     background: linear-gradient(45deg, #48dbfb, #0abde3) !important;
     border-radius: 10px !important;
-}
-
-.chat-messages::-webkit-scrollbar-thumb:hover {
-    background: linear-gradient(45deg, #ff6b6b, #feca57) !important;
 }
 
 /* ===== RESPONSIVE DESIGN ===== */
@@ -357,8 +331,8 @@ body {
         font-size: 1.4em !important;
     }
     
-    .cyber-card {
-        padding: 15px !important;
+    .login-card {
+        padding: 20px !important;
     }
 }
 
@@ -386,4 +360,11 @@ body {
 
 .stTextInput > div > div > input::placeholder {
     color: rgba(255, 255, 255, 0.5) !important;
+}
+
+.stSelectbox > div > div {
+    background: rgba(255, 255, 255, 0.1) !important;
+    color: #ffffff !important;
+    border: 1px solid rgba(72, 219, 251, 0.3) !important;
+    border-radius: 10px !important;
 }
