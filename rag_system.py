@@ -101,3 +101,4 @@ class PsychologyRAGSystem:
         except Exception as e:
             print(f"❌ Lỗi tìm kiếm: {e}")
             return []
+
