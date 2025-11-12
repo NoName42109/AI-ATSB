@@ -47,7 +47,7 @@ def init_session_state():
 # Hàm gọi Gemini API
 def call_gemini_api(prompt):
     """Gọi Gemini API"""
-    GEMINI_API_KEY = "AIzaSyCZXmiLRMjSc26rWcjD7CB2Voszk3HJTeU"  # Thay key thật
+    GEMINI_API_KEY = "AIzaSyAvyKfmknEn85ZAPqBruZyRAqGJQ-ROCkc"  # Thay key thật
     
     url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key={GEMINI_API_KEY}"
     headers = {'Content-Type': 'application/json'}
@@ -192,3 +192,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
