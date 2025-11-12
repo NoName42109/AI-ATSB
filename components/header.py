@@ -3,22 +3,8 @@ import streamlit as st
 
 def render_header():
     st.markdown("""
-    <div class="cyber-card" style="
-        background: rgba(0, 0, 0, 0.6);
-        border: 1px solid rgba(72, 219, 251, 0.3);
-        border-radius: 15px;
-        padding: 20px;
-        margin-bottom: 20px;
-        backdrop-filter: blur(10px);
-        box-shadow: 0 0 20px rgba(72, 219, 251, 0.2);
-    ">
-        <h1 class="neon-text" style="
-            color: #48dbfb;
-            text-shadow: 0 0 10px #48dbfb, 0 0 20px #48dbfb;
-            text-align: center;
-            margin-bottom: 10px;
-            font-size: 1.8em;
-        ">🧠 AI PSYCHOLOGY MENTOR</h1>
+    <div class="cyber-card">
+        <h1 class="neon-text">🧠 AI PSYCHOLOGY MENTOR</h1>
         
         <p style="color: #48dbfb; margin-bottom: 15px; font-weight: bold; text-align: center;">
             Powered by Google Gemini
