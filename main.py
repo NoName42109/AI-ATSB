@@ -25,10 +25,10 @@ st.set_page_config(
 # Áp dụng CSS
 def load_css():
     try:
-        with open('./main.css') as f:
+        with open('./styles/main.css') as f:
             st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
     except:
-        pass
+        st.warning("Không tìm thấy file CSS")
     try:
         with open('./styles/animations.css') as f:
             st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
@@ -70,6 +70,9 @@ def generate_ai_response(user_message):
     relevant_info = st.session_state.rag_system.search_similar(user_message, top_k=3)
     context = "\n".join(relevant_info) if relevant_info else "Không tìm thấy thông tin liên quan trong tài liệu."
     
+    # Lấy lịch sử gần đây
+    recent_history = get_recent_history()
+    
     # Tạo prompt
     prompt = f"""
 BẠN LÀ CHUYÊN GIA TÂM LÝ HỌC ĐƯỜNG được đào tạo bài bản.
@@ -78,7 +81,7 @@ KIẾN THỨC CHUYÊN MÔN TỪ TÀI LIỆU:
 {context}
 
 LỊCH SỬ TRÒ CHUYỆN GẦN ĐÂY:
-{get_recent_history()}
+{recent_history}
 
 TIN NHẮN HIỆN TẠI TỪ HỌC SINH:
 "{user_message}"
@@ -98,6 +101,9 @@ Trả lời bằng tiếng Việt tự nhiên, gần gũi với học sinh.
 
 def get_recent_history():
     """Lấy lịch sử gần đây"""
+    if 'conversation_history' not in st.session_state:
+        return "Chưa có lịch sử trò chuyện"
+    
     if not st.session_state.conversation_history:
         return "Chưa có lịch sử trò chuyện"
     
@@ -186,4 +192,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
