@@ -25,7 +25,7 @@ st.set_page_config(
 # Áp dụng CSS
 def load_css():
     try:
-        with open('./styles/main.css') as f:
+        with open('./main.css') as f:
             st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
     except:
         pass
@@ -186,3 +186,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
